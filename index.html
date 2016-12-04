@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="./styles/master.css" media="screen" title="no title">
+    <title>IM</title>
+  </head>
+  <body>
+    <div class="mask"></div>
+    <div id="loginContent">
+      <h4 id="info">服务器连接中....</h4>
+      <div class="hide">
+        <input id="nickname" type="text" name="name" value="">
+        <button id="loginBtn" type="button" name="button">登录</button>
+      </div>
+    </div>
+
+    <section id="chatRoom">
+      <header id="header">IM 聊天室</header>
+      <div>当前 <span  id="userOnlineNum"></span> 位用户在线</div>
+      <div id="showContent"></div>
+      <div id="functionArea">
+
+      </div>
+      <div id="editArea">
+        <textarea id="writeContent" name="name" placeholder="请输入...."></textarea>
+        <button id="sendBtn">发送</button>
+      </div>
+    </section>
+
+    <script type="text/javascript" src="./node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script type="text/javascript" src="./scripts/IM.js"></script>
+  </body>
+</html>
