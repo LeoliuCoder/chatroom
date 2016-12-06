@@ -6,8 +6,8 @@ var express = require('express'),
     users   = [];       // 保存所有在线用户的昵称
 
 app.use('/', express.static(__dirname));
-console.log(process.env.PORT);
-server.listen(process.env.PORT || 3000);
+
+server.listen(process.env.PORT || 5000);
 
 io.on('connection', function(socket) {
 
@@ -50,4 +50,4 @@ io.on('connection', function(socket) {
   })
 });
 
-console.log('Server running at http://127.0.0.1:3000/');
+console.log('Server running at http://127.0.0.1:5000/');

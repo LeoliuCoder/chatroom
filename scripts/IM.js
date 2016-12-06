@@ -54,9 +54,9 @@ IM.receive = function() {
 
     document.getElementById('userOnlineNum').innerHTML = userLength;
     if (state === 'login') {
-      showContent.innerHTML += '系统提示' + ' ( ' + date + ' ) ' + ': ' + nickname + ' 进入房间' + '<br>';
+      showContent.innerHTML += '<span style="color: #5b6169">' + '系统提示' + ' ( ' + date + ' ) ' + ': ' + nickname + ' 进入房间' + '</span>' + '<br>' ;
     } else {
-      showContent.innerHTML += '系统提示： ' + nickname + ' 离开了' + '<br>';
+      showContent.innerHTML += '<span style="color: #5b6169">' + '系统提示： ' + nickname + ' 离开了' + '</span>' + '<br>';
     }
   });
 
@@ -91,8 +91,8 @@ IM.postMessage = function() {
     if (message.value.length > 0) {
       var showContent = document.getElementById('showContent');
       var date = IM.formatDateTime(new Date());
-      var msg = IM.nickname + ' ( ' + date + ' ) ' + ' : ' + message.value + '<br>';
-      console.log(date);
+      var msg = '<span style="color: #fff670">' + IM.nickname + '&nbsp;' + '&nbsp;' + '&nbsp;' + '&nbsp;' + date +
+                '</span>' + '<br>' + '<span style="padding-left: 30px">' + message.value + '</span>' + '<br>';
 
       showContent.innerHTML += msg;
       IM.socket.emit('postMsg', msg);

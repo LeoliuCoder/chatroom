@@ -47,7 +47,7 @@ body {
 
 #headContent {
   width: 800px;
-  height: 130px;
+  height: 114px;
   background: url(../imgs/header_bk.png) no-repeat;
   text-align: center;
   padding-top: 26px;
@@ -57,19 +57,15 @@ body {
 
 #showContent {
   height: 500px;
-  width: 800px;
-  margin-top: 50px;
+  width: 760px;
+  border-radius: 10px;
+  margin-top: 20px;
   background-color: #323642;
   line-height: 30px;
   overflow: auto;
-  color: #ffffff;
+  color: #f8ffff;
   padding-top: 40px;
   padding-left: 40px;
-}
-
-#functionArea {
-  height: 50px;
-  border-bottom: 1px solid #730b96;
 }
 
 #editArea {
@@ -77,17 +73,25 @@ body {
 }
 
 #writeContent {
-  height: 100px;
-  width: 680px;
-  font-size: 30px;
+  height: 90px;
+  width: 790px;
+  /*border-radius: 10px;*/
+  line-height: 30px;
+  font-size: 18px;
   margin: 5px 0 4px 0;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: #323642;
+  color: #f8ffff;
+  margin-top: 30px;
 }
 
-#sendBtn {
-  width: 100px;
-  height: 60px;
+#sendAlink {
+  display: inline-block;
+  text-decoration: none;
+  color: #323642;
   position: absolute;
-  top: 28px;
+  top: 150px;
   right: 9px;
   cursor: pointer;
 }
