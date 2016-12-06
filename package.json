@@ -4,7 +4,7 @@
   "description": "This is a chatroom project which bulit with HTML5 and Node.js.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
