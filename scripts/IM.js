@@ -15,8 +15,9 @@ IM.init = function() {
   // 监听 socket 的 connect 事件，表示连接已建立
   IM.socket.on('connect', function() {
     // 已经连接到服务器
-    document.getElementsByTagName('div')[2].className = 'show';
-    document.getElementById('info').innerHTML = '请输入您的昵称';
+    // document.getElementsByTagName('div')[2].className = 'show';
+    document.getElementById('info').className = 'hide';
+    document.getElementById('loginArea').className = 'show';
     document.getElementById('nickname').focus();
   })
 };
@@ -92,7 +93,7 @@ IM.postMessage = function() {
       var showContent = document.getElementById('showContent');
       var date = IM.formatDateTime(new Date());
       var msg = '<span style="color: #fff670">' + IM.nickname + '&nbsp;' + '&nbsp;' + '&nbsp;' + '&nbsp;' + date +
-                '</span>' + '<br>' + '<span style="padding-left: 30px">' + message.value + '</span>' + '<br>';
+                '</span>' + '<br>' + '<span style="padding-left: 20px">' + message.value + '</span>' + '<br>';
 
       showContent.innerHTML += msg;
       IM.socket.emit('postMsg', msg);

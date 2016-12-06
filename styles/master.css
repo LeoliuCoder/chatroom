@@ -28,6 +28,48 @@ body {
   background: url(../imgs/body_bk.png) no-repeat;
 }
 
+h4 {
+  color: #f8ffff;
+  font-size: 22px;
+}
+
+#loginArea {
+  width: 273px;
+  margin: 0 auto;
+}
+
+.nicknameInputContent {
+  width: 273px;
+  height: 100px;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #3c404d;
+  font-size: 22px;
+}
+
+#nickname {
+  width: 205px;
+  height: 44px;
+  padding: 0 5px 0 5px;
+  font-size: 22px;
+  border-radius: 10px;
+  margin-top: 26px;
+  outline: none;
+  text-align: center;
+}
+
+#loginBtn {
+  width: 273px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: #fff670;
+  outline: none;
+  margin: 0;
+  margin-top: 20px;
+}
+
 #chatRoom {
     width: 800px;
     margin: 20px auto 10px auto;
@@ -84,6 +126,9 @@ body {
   background-color: #323642;
   color: #f8ffff;
   margin-top: 30px;
+  resize: none;
+  border: none;
+  outline: none;
 }
 
 #sendAlink {
@@ -99,25 +144,8 @@ body {
 #loginContent {
   position: absolute;
   top: 300px;
-  left: 730px;
+  left: 770px;
   width: 300px;
   text-align: center;
   z-index: 200;
-}
-
-#info {
-  padding-bottom: 20px;
-  color: #cacd23;
-}
-
-#nickname {
-  height: 30px;
-  margin-left: 60px;
-  margin-right: 10px;
-}
-
-#loginBtn {
-  width: 50px;
-  height: 30px;
-  cursor: pointer;
 }
