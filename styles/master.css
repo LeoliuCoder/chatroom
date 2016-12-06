@@ -25,32 +25,46 @@
 
 body {
   background-color: #c6e6f1;
+  background: url(../imgs/body_bk.png) no-repeat;
 }
 
 #chatRoom {
     width: 800px;
-    margin: 100px auto 10px auto;
-    border: 1px solid black;
-    background-color: #d0c9c3;
+    margin: 20px auto 10px auto;
 }
 
 #header {
-  padding: 10px;
-  color: #356ce7;
+  font-size: 32px;
+}
+
+#userInformation {
+  font-size: 18px;
 }
 
 #userOnlineNum {
   color: red;
 }
 
+#headContent {
+  width: 800px;
+  height: 130px;
+  background: url(../imgs/header_bk.png) no-repeat;
+  text-align: center;
+  padding-top: 26px;
+  color: #f8ffff;
+
+}
+
 #showContent {
-  border-top: 1px solid #54a41d;
-  border-bottom: 1px solid #54a41d;
   height: 500px;
-  margin-top: 10px;
-  background-color: #ffffff;
+  width: 800px;
+  margin-top: 50px;
+  background-color: #323642;
   line-height: 30px;
-  overflow: scroll;
+  overflow: auto;
+  color: #ffffff;
+  padding-top: 40px;
+  padding-left: 40px;
 }
 
 #functionArea {
