@@ -25,7 +25,7 @@
 
 body {
   background-color: #c6e6f1;
-  background: url(../imgs/body_bk.png) no-repeat;
+  background: url(../imgs/body_bk.png) repeat;
 }
 
 h4 {
