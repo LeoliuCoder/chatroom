@@ -102,5 +102,7 @@ IM.postMessage = function() {
       message.focus();
       alert('请输入内容后再发送！');
     }
+
+    message.focus();
   }
 }
