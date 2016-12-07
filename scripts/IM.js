@@ -2,6 +2,7 @@ window.onload = function() {
   IM.init();
   IM.receive();
   IM.login();
+  IM.onKeyDown();
   IM.postMessage();
   IM.forbidZoom();
 }
@@ -33,6 +34,29 @@ IM.forbidZoom = function() {
      event.returnValue=false;
     }
   }
+};
+
+IM.onKeyDown = function() {
+  $('#writeContent').keypress(function(event) {
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      console.log(111);
+      console.log(event);
+      console.log(keycode);
+      if(keycode == '13'){    // 按下 enter 键
+        IM.sendButtonClicked();
+        event.preventDefault();
+      }
+  });
+
+  $('#nickname').keypress(function(event) {
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      console.log(111);
+      console.log(event);
+      console.log(keycode);
+      if(keycode == '13'){    // 按下 enter 键
+        IM.loginButtonClicked();
+      }
+  });
 };
 
 IM.formatDateTime = function(date) {
@@ -80,42 +104,48 @@ IM.receive = function() {
   });
 }
 
+IM.loginButtonClicked = function() {
+  var nickname = document.getElementById('nickname');
+
+  if (nickname.value.length > 0) {
+    IM.socket.emit('login', nickname.value)
+  } else {
+    nickname.focus();
+    alert('请输入您的昵称！');
+  }
+}
+
 IM.login = function() {
   var loginBtn = document.getElementById('loginBtn');
 
   loginBtn.onclick = function() {
-    var nickname = document.getElementById('nickname');
-
-    if (nickname.value.length > 0) {
-      IM.socket.emit('login', nickname.value)
-    } else {
-      nickname.focus();
-      alert('请输入您的昵称！');
-    }
+    IM.loginButtonClicked();
   };
 };
+
+IM.sendButtonClicked = function() {
+  var message = document.getElementById('writeContent');
+
+  if (message.value.length > 0) {
+    var showContent = document.getElementById('showContent');
+    var date = IM.formatDateTime(new Date());
+    var msg = '<span style="color: #fff670">' + IM.nickname + '&nbsp;' + '&nbsp;' + '&nbsp;' + '&nbsp;' + date +
+              '</span>' + '<br>' + '<span style="padding-left: 20px">' + message.value + '</span>' + '<br>';
+
+    showContent.innerHTML += msg;
+    IM.socket.emit('postMsg', msg);
+  } else {
+    alert('请输入内容后再发送！');
+  }
+
+  message.value = '';
+  message.focus();
+}
 
 IM.postMessage = function() {
   var sendBtn = document.getElementById('sendBtn');
 
   sendBtn.onclick = function() {
-    console.log(222);
-    var message = document.getElementById('writeContent');
-
-    if (message.value.length > 0) {
-      var showContent = document.getElementById('showContent');
-      var date = IM.formatDateTime(new Date());
-      var msg = '<span style="color: #fff670">' + IM.nickname + '&nbsp;' + '&nbsp;' + '&nbsp;' + '&nbsp;' + date +
-                '</span>' + '<br>' + '<span style="padding-left: 20px">' + message.value + '</span>' + '<br>';
-
-      showContent.innerHTML += msg;
-      IM.socket.emit('postMsg', msg);
-      message.value = '';
-    } else {
-      message.focus();
-      alert('请输入内容后再发送！');
-    }
-
-    message.focus();
+    IM.sendButtonClicked();
   }
 }
