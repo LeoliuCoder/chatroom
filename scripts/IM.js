@@ -1,8 +1,9 @@
 window.onload = function() {
-    IM.init();
-    IM.receive();
-    IM.login();
-    IM.postMessage();
+  IM.init();
+  IM.receive();
+  IM.login();
+  IM.postMessage();
+  IM.forbidZoom();
 }
 
 // 定义 IM 命名空间
@@ -17,9 +18,21 @@ IM.init = function() {
     // 已经连接到服务器
     // document.getElementsByTagName('div')[2].className = 'show';
     document.getElementById('info').className = 'hide';
-    document.getElementById('loginArea').className = 'show';
+    $('#loginArea').fadeIn(2000);
+    // document.getElementById('loginArea').className = 'show';
     document.getElementById('nickname').focus();
   })
+};
+
+IM.forbidZoom = function() {
+  window.onmousewheel = document.onmousewheel = function(e) {
+    e=e || window.event;
+    if(e.wheelDelta && event.ctrlKey){//IE/Opera/Chrome
+     event.returnValue=false;
+    }else if(e.detail){//Firefox
+     event.returnValue=false;
+    }
+  }
 };
 
 IM.formatDateTime = function(date) {
@@ -34,7 +47,7 @@ IM.formatDateTime = function(date) {
   var seconds = date.getSeconds();
   seconds = seconds < 10 ? ('0' + seconds) : seconds;
   return y + '-' + m + '-' + d+' '+h+':'+minute+':'+seconds;
-}
+};
 
 IM.receive = function() {
   IM.socket.on('loginFailed', function(data) {

@@ -76,28 +76,37 @@ h4 {
     margin: 20px auto 10px auto;
 }
 
+#headContent {
+  width: 100%;
+  height: 140px;
+  background: url(../imgs/header_bk.png) no-repeat;
+  color: #f8ffff;
+  position: relative;
+}
+
+#headContent img {
+  margin-left: 360px;
+}
+
 #header {
   font-size: 32px;
-  margin-bottom: 25px;
+  position: absolute;
+  top: 10px;
+  left: 525px;
 }
 
 #userInformation {
   font-size: 18px;
+  position: absolute;
+  top: 60px;
+  left: 525px;
 }
 
 #userOnlineNum {
   color: red;
 }
 
-#headContent {
-  width: 800px;
-  height: 114px;
-  background: url(../imgs/header_bk.png) no-repeat;
-  text-align: center;
-  padding-top: 26px;
-  color: #f8ffff;
 
-}
 
 #showContent {
   height: 500px;

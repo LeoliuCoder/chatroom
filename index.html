@@ -19,11 +19,13 @@
       </div>
     </div>
 
+    <div id="headContent">
+      <img src="./imgs/logo.png" alt="logo">
+      <header id="header">IM 聊天室</header>
+      <div id="userInformation">当前 <span  id="userOnlineNum"></span> 位用户在线</div>
+    </div>
+
     <section id="chatRoom">
-      <div id="headContent">
-        <header id="header">IM 聊天室</header>
-        <div id="userInformation">当前 <span  id="userOnlineNum"></span> 位用户在线</div>
-      </div>
       <div id="showContent"></div>
       <div id="editArea">
         <textarea id="writeContent" name="name" placeholder="请输入...."></textarea>
@@ -31,6 +33,7 @@
       </div>
     </section>
 
+    <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="./node_modules/socket.io-client/dist/socket.io.js"></script>
     <script type="text/javascript" src="./scripts/IM.js"></script>
   </body>
