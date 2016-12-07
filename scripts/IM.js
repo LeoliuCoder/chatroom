@@ -34,7 +34,7 @@ IM.emojiInit = function() {
 
   for (var i = 0; i < 40; ++i) {
     smojiSrc = './emoji/' + (i + 1) + '.gif';
-    $('#emojiSelectArea')[0].innerHTML += '<a href="">' + "<img style='padding:10px' src="+ smojiSrc +">" + '</a>';
+    $('#emojiSelectArea')[0].innerHTML += '<a href="">' + "<img style='padding:10px;' src="+ smojiSrc +">" + '</a>';
   }
 }
 
