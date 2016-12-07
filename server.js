@@ -12,7 +12,6 @@ server.listen(process.env.PORT || 5000);
 io.on('connection', function(socket) {
 
   socket.on('foo', function(data) {
-    console.log(data);
     socket.emit('haha', 'Nice to meet you!');
   });
 
@@ -30,7 +29,6 @@ io.on('connection', function(socket) {
 
   socket.on('postMsg', function(msg) {
     if (msg.length > 0) {
-      console.log(444444);
       socket.broadcast.emit('msgBroadcast', msg);
 
 
@@ -42,9 +40,6 @@ io.on('connection', function(socket) {
 
 
   socket.on('disconnect', function() {
-    console.log(5555);
-    console.log(socket.userIndex);
-    console.log(socket.nickname);
     users.splice(socket.userIndex, 1);
     socket.broadcast.emit('system', socket.nickname, users.length, 'logout');
   })

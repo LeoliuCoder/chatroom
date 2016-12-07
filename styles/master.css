@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .mask {
   position: absolute;
   left: 0;
@@ -106,7 +110,20 @@ h4 {
   color: red;
 }
 
+#repo {
+  position: absolute;
+  top: 30px;
+  right: 400px;
+  color: #f8ffff;
+}
 
+#repo h4 {
+  margin-bottom: 10px;
+}
+
+#repo a {
+color: #f8ffff;
+}
 
 #showContent {
   height: 500px;
@@ -162,4 +179,23 @@ h4 {
   width: 300px;
   text-align: center;
   z-index: 200;
+}
+
+#uploadImg {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0px;
+  left: 1100px;
+}
+
+#selectImgFile {
+  position: absolute;
+  top: 0px;
+  left:1100px;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  opacity: 0;
+  cursor: pointer;
 }

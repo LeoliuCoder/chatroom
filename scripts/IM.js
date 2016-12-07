@@ -5,6 +5,7 @@ window.onload = function() {
   IM.onKeyDown();
   IM.postMessage();
   IM.forbidZoom();
+  IM.imgFileSelect();
 }
 
 // 定义 IM 命名空间
@@ -43,9 +44,7 @@ IM.forbidZoom = function() {
 IM.onKeyDown = function() {
   $('#writeContent').keypress(function(event) {
       var keycode = (event.keyCode ? event.keyCode : event.which);
-      console.log(111);
-      console.log(event);
-      console.log(keycode);
+
       if(keycode == '13'){    // 按下 enter 键
         IM.sendButtonClicked();
         event.preventDefault();
@@ -54,9 +53,7 @@ IM.onKeyDown = function() {
 
   $('#nickname').keypress(function(event) {
       var keycode = (event.keyCode ? event.keyCode : event.which);
-      console.log(111);
-      console.log(event);
-      console.log(keycode);
+
       if(keycode == '13'){    // 按下 enter 键
         IM.loginButtonClicked();
       }
@@ -103,7 +100,6 @@ IM.receive = function() {
   });
 
   IM.socket.on('msgBroadcast', function(msg) {
-    console.log(555555);
     document.getElementById('showContent').innerHTML += msg;
   });
 }
@@ -127,14 +123,34 @@ IM.login = function() {
   };
 };
 
-IM.sendButtonClicked = function() {
+IM.sendButtonClicked = function(imgSrc) {
   var message = document.getElementById('writeContent');
+  var msg = '';
 
-  if (message.value.length > 0) {
+  if (message.value.length > 0 || imgSrc !== undefined) {
     var showContent = document.getElementById('showContent');
     var date = IM.formatDateTime(new Date());
-    var msg = '<span style="color: #fff670">' + IM.nickname + '&nbsp;' + '&nbsp;' + '&nbsp;' + '&nbsp;' + date +
-              '</span>' + '<br>' + '<span style="padding-left: 20px">' + message.value + '</span>' + '<br>';
+
+    switch (IM.nickname) {
+      case '刘轩':
+        IM.nickname = '<span style="color: #70bdff">' + IM.nickname + '</span>';
+        break;
+      case '法国大种马':
+        IM.nickname = '<span style="color: #ff7070">' + IM.nickname + '</span>';
+        break;
+      default:
+        break;
+    }
+
+    if (imgSrc === undefined) {
+      msg = '<span style="color: #fff670">' + IM.nickname + '&nbsp;' + '&nbsp;' + '&nbsp;' + '&nbsp;' + date +
+            '</span>' + '<br>' + '<span style="padding-left: 20px">' + message.value + '</span>' + '<br>';
+    } else {
+      msg = '<span style="color: #fff670">' + IM.nickname + '&nbsp;' + '&nbsp;' + '&nbsp;' + '&nbsp;' + date +
+            '</span>' + '<br>' + '<span style="padding-left: 20px">' + message.value + '</span>' + '<br>' +
+            "<img src="+ imgSrc +" alt='uploadImg'>" + '<br>';
+    }
+
 
     showContent.innerHTML += msg;
     IM.socket.emit('postMsg', msg);
@@ -152,5 +168,37 @@ IM.postMessage = function() {
 
   sendBtn.onclick = function() {
     IM.sendButtonClicked();
+  }
+}
+
+IM.imgFileSelect = function() {
+  var imgFile = $('#selectImgFile')[0];
+
+  imgFile.onchange = function() {
+    if (imgFile.files.length > 0) {
+      var file = imgFile.files[0];
+      var reader = new FileReader();
+
+      if (!reader) {
+        alert('您的浏览器不支持 FileReader!');
+        return ;
+      }
+
+      reader.onload = function(e) {
+        var result;
+
+        result = this.result;
+
+        IM.sendButtonClicked(result);
+        // $('#showContent')[0].innerHTML += '<br>' + "<img src="+ result +" alt='uploadImg'>" + '<br>';
+        console.log(222222222);
+        console.log(result);
+      }
+
+      reader.readAsDataURL(file);
+    }
+    console.log(111111);
+    console.log(imgFile.files.length);
+    console.log(imgFile.files[0]);
   }
 }
