@@ -1,11 +1,14 @@
 window.onload = function() {
   IM.init();
+  IM.emojiInit();
   IM.receive();
   IM.login();
   IM.onKeyDown();
   IM.postMessage();
   IM.forbidZoom();
   IM.imgFileSelect();
+  IM.emojiShow();
+  IM.emojiSelect();
 }
 
 // 定义 IM 命名空间
@@ -26,9 +29,14 @@ IM.init = function() {
   })
 };
 
+IM.emojiInit = function() {
+  var smojiSrc = '';
 
-
-
+  for (var i = 0; i < 40; ++i) {
+    smojiSrc = './emoji/' + (i + 1) + '.gif';
+    $('#emojiSelectArea')[0].innerHTML += '<a href="">' + "<img style='padding:10px' src="+ smojiSrc +">" + '</a>';
+  }
+}
 
 IM.forbidZoom = function() {
   window.onmousewheel = document.onmousewheel = function(e) {
@@ -101,6 +109,7 @@ IM.receive = function() {
 
   IM.socket.on('msgBroadcast', function(msg) {
     document.getElementById('showContent').innerHTML += msg;
+    $('#showContent')[0].scrollTop = $('#showContent')[0].scrollHeight;       // 对话框滚动条始终保持在最底部
   });
 }
 
@@ -127,9 +136,11 @@ IM.sendButtonClicked = function(imgSrc) {
   var message = document.getElementById('writeContent');
   var msg = '';
 
+
   if (message.value.length > 0 || imgSrc !== undefined) {
     var showContent = document.getElementById('showContent');
     var date = IM.formatDateTime(new Date());
+    var reg = /\[emoji:\d+\]/g;
 
     switch (IM.nickname) {
       case '刘轩':
@@ -150,6 +161,14 @@ IM.sendButtonClicked = function(imgSrc) {
             '</span>' + '<br>' + '<span style="padding-left: 20px">' + message.value + '</span>' + '<br>' +
             "<img src="+ imgSrc +" alt='uploadImg'>" + '<br>';
     }
+
+
+
+
+      console.log(reg.exec(msg));
+
+
+
 
 
     showContent.innerHTML += msg;
@@ -185,20 +204,33 @@ IM.imgFileSelect = function() {
       }
 
       reader.onload = function(e) {
-        var result;
-
-        result = this.result;
-
-        IM.sendButtonClicked(result);
-        // $('#showContent')[0].innerHTML += '<br>' + "<img src="+ result +" alt='uploadImg'>" + '<br>';
-        console.log(222222222);
-        console.log(result);
+        IM.sendButtonClicked(this.result);
       }
 
       reader.readAsDataURL(file);
     }
-    console.log(111111);
-    console.log(imgFile.files.length);
-    console.log(imgFile.files[0]);
+  }
+}
+
+
+IM.emojiShow = function() {
+  $('#emoji')[0].onclick = function() {
+    $('#emojiSelectArea').toggle(400);
+  }
+}
+
+IM.emojiSelect = function() {
+  var emojiShow = $('#emojiSelectArea')[0];
+  var emojiArr = emojiShow.getElementsByTagName('a');
+
+  for (var i = 0; i < emojiArr.length; ++i) {
+    emojiArr[i].index = i;
+    emojiArr[i].onclick = function(e) {
+      var emojiID = this.index;
+
+      document.getElementById('writeContent').value += '[emoji:' + emojiID + ']';
+
+      e.preventDefault();
+    }
   }
 }

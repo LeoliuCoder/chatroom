@@ -199,3 +199,31 @@ color: #f8ffff;
   opacity: 0;
   cursor: pointer;
 }
+
+#emojiCover {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0px;
+  left:1000px;
+}
+
+#emoji {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0px;
+  left:1000px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#emojiSelectArea {
+  width: 600px;
+  height: 250px;
+  /*padding: 10px;*/
+  position: absolute;
+  top: -270px;
+  left:1000px;
+  border: 1px solid red;
+}
