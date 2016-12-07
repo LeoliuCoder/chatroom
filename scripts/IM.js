@@ -25,6 +25,10 @@ IM.init = function() {
   })
 };
 
+
+
+
+
 IM.forbidZoom = function() {
   window.onmousewheel = document.onmousewheel = function(e) {
     e=e || window.event;
@@ -138,6 +142,7 @@ IM.sendButtonClicked = function() {
     alert('请输入内容后再发送！');
   }
 
+  $('#showContent')[0].scrollTop = $('#showContent')[0].scrollHeight;       // 对话框滚动条始终保持在最底部
   message.value = '';
   message.focus();
 }
