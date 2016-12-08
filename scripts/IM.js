@@ -141,6 +141,8 @@ IM.sendButtonClicked = function(imgSrc) {
     var showContent = document.getElementById('showContent');
     var date = IM.formatDateTime(new Date());
     var reg = /\[emoji:\d+\]/g;
+    var match = [];
+    var emojiIndex = null;
 
     switch (IM.nickname) {
       case '刘轩':
@@ -162,10 +164,22 @@ IM.sendButtonClicked = function(imgSrc) {
             "<img src="+ imgSrc +" alt='uploadImg'>" + '<br>';
     }
 
+    while(match = reg.exec(msg)) {
+      emojiIndex = match[0].slice(7, -1);
+      emojiIndex = parseInt(emojiIndex, 10) + 1;
+      msg = msg.replace(match[0], '<img class="emojiStyle" src="../emoji/'+ emojiIndex +'.gif" alt="emoji">');
+      console.log(match[0]);
+      console.log(emojiIndex);
+      console.log(msg);
+    }
+
+    // console.log(msg);
+    // var arr = reg.exec(msg);
+    // for(var i=0;i<arr.length;i++){
+    // console.log(arr[i]);
+    // }
 
 
-
-      console.log(reg.exec(msg));
 
 
 

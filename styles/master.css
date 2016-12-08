@@ -227,3 +227,7 @@ color: #f8ffff;
   left:1000px;
   border: 1px solid red;
 }
+
+.emojiStyle {
+  padding: 0 10px 0 10px;
+}
