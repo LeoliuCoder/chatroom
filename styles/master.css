@@ -182,38 +182,38 @@ color: #f8ffff;
 }
 
 #uploadImg {
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  top: 0px;
-  left: 1100px;
+  top: 17px;
+  left: 1140px;
 }
 
 #selectImgFile {
   position: absolute;
-  top: 0px;
-  left:1100px;
-  width: 60px;
-  height: 60px;
+  top: 17px;
+  left:1140px;
+  width: 40px;
+  height: 40px;
   overflow: hidden;
   opacity: 0;
   cursor: pointer;
 }
 
 #emojiCover {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  top: 0px;
-  left:1000px;
+  top: 17px;
+  left:1090px;
 }
 
 #emoji {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  top: 0px;
-  left:1000px;
+  top: 17px;
+  left:1090px;
   opacity: 0;
   cursor: pointer;
 }
@@ -229,5 +229,7 @@ color: #f8ffff;
 }
 
 .emojiStyle {
+  width: 60px;
+  height: 60px;
   padding: 0 10px 0 10px;
 }
